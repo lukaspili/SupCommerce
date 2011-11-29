@@ -1,0 +1,1 @@
+<p style="text-align: center">Copyright SUPINFO 2011-2012</p>

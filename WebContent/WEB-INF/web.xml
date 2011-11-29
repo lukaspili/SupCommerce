@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>SupCommerceClermont</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- PUBLIC -->
+
+	<servlet>
+		<servlet-name>ListProductServlet</servlet-name>
+		<servlet-class>com.supinfo.supcommerce.servlet.ListProductServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ListProductServlet</servlet-name>
+		<url-pattern>/listProduct</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ShowProductServlet</servlet-name>
+		<servlet-class>com.supinfo.supcommerce.servlet.ShowProductServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ShowProductServlet</servlet-name>
+		<url-pattern>/showProduct</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>com.supinfo.supcommerce.servlet.LoginServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>com.supinfo.supcommerce.servlet.LogoutServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- AUTH AREA -->
+
+	<servlet>
+		<servlet-name>AddProductServlet</servlet-name>
+		<servlet-class>com.supinfo.supcommerce.servlet.AddProductServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AddProductServlet</servlet-name>
+		<url-pattern>/auth/addProduct</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>InsertSomeProductServlet</servlet-name>
+		<servlet-class>com.supinfo.supcommerce.servlet.InsertSomeProductServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>InsertSomeProductServlet</servlet-name>
+		<url-pattern>/auth/basicInsert</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- FILTERS -->
+
+	<filter>
+		<filter-name>AuthenticateFilter</filter-name>
+		<filter-class>com.supinfo.supcommerce.filter.AuthenticateFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>AuthenticateFilter</filter-name>
+		<url-pattern>/auth/*</url-pattern>
+	</filter-mapping>
+</web-app>
