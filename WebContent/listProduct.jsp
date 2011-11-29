@@ -21,6 +21,14 @@
 	<%= product.getContent() %> <br />
 	<%= product.getPrice() %> euros <br />
 	<a href="showProduct.jsp?id=<%= product.getId() %>">Voir en détail</a>
+	
+	<% if(session.getAttribute("login") != null) { %>
+		<br />
+		<form method="post" action="<%= application.getContextPath() %>/auth/removeProduct">
+			<input type="hidden" name="id" value="<%= product.getId() %>"/>
+			<input type="submit" value="Supprimer ce produit">
+		</form>
+	<% } %>
 </p>
 
 <% } %>

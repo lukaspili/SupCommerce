@@ -73,6 +73,16 @@
 		<url-pattern>/auth/basicInsert</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>RemoveProductServlet</servlet-name>
+		<servlet-class>com.supinfo.supcommerce.servlet.RemoveProductServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>RemoveProductServlet</servlet-name>
+		<url-pattern>/auth/removeProduct</url-pattern>
+	</servlet-mapping>
+
 
 	<!-- FILTERS -->
 
