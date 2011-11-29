@@ -39,7 +39,7 @@ public class AddProductServlet extends HttpServlet {
 		
 		SupProductDao.addProduct(product);
 		
-		resp.sendRedirect(req.getContextPath() + "/showProduct.jsp?id=" + product.getId());
+		resp.sendRedirect(req.getContextPath() + "/showProduct?id=" + product.getId());
 	}
 
 	private void showError(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

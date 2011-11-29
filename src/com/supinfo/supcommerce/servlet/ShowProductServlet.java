@@ -3,6 +3,7 @@ package com.supinfo.supcommerce.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,7 @@ public class ShowProductServlet extends HttpServlet {
 		try {
 			id = Long.valueOf(idParam);
 		} catch (NumberFormatException e) {
-			out.println("<p>Id invalide !</p>");
+			resp.sendRedirect(req.getContextPath() + "/listProduct");
 			return;
 		}
 
@@ -36,17 +37,13 @@ public class ShowProductServlet extends HttpServlet {
 		try {
 			product = SupProductDao.findProductById(id);
 		} catch (UnknownProductException e) {
-			out.println("<p>Le produit n'existe pas !</p>");
+			resp.sendRedirect(req.getContextPath() + "/listProduct");
 			return;
 		}
-
-		out.println("<p>");
-		out.println("Name : " + product.getName() + "<br />");
-		out.println("Content : " + product.getName() + "<br />");
-		out.println("Price : " + product.getName());
-		out.println("</p>");
 		
-		out.println("<p><a href=\"listProduct\">Retourner à la liste des produits</a></p>");
+		req.setAttribute("product", product);
+		RequestDispatcher rd = req.getRequestDispatcher("/showProduct.jsp");
+		rd.forward(req, resp);
 	}
 
 }

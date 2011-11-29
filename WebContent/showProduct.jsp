@@ -3,6 +3,8 @@
 <%@page import="com.supinfo.sun.supcommerce.bo.SupProduct"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,34 +13,13 @@
 </head>
 <body>
 
-<% String idParam = request.getParameter("id"); %>
-
-<% long id = 0;
-
-try {
-	id = Long.valueOf(idParam);
-} catch (NumberFormatException e) {
-	response.sendRedirect("listProduct.jsp");
-	return;
-} %>
-
-
-<% SupProduct product = null;
-
-try {
-	product = SupProductDao.findProductById(id);
-} catch (UnknownProductException e) {
-	response.sendRedirect("listProduct.jsp");
-	return;
-} %>
-
 <%@ include file="/template/header.jsp" %>
 
-<h2><%= product.getName() %></h2>
+<h2><c:out value="${product.name}" /></h2>
 
 <p>
-	<%= product.getContent() %> <br />
-	<%= product.getPrice() %> euros <br />
+	<c:out value="${product.content}" /> <br />
+	<c:out value="${product.price}" /> euros <br />
 </p>
 
 <%@ include file="/template/footer.jsp" %>

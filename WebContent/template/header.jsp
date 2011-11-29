@@ -7,7 +7,7 @@
 </h1>
 
 <p>
-	<a href="<%= application.getContextPath() %>/listProduct.jsp">Liste des produits</a> |
+	<a href="<%= application.getContextPath() %>/listProduct">Liste des produits</a> |
 
 	<% if(session.getAttribute("login") != null) { %>
 		<a href="<%= application.getContextPath() %>/auth/addProduct.jsp">Nouveau produit</a> |

@@ -1,7 +1,12 @@
+<%@page import="java.util.List"%>
 <%@page import="com.supinfo.sun.supcommerce.doa.SupProductDao"%>
 <%@page import="com.supinfo.sun.supcommerce.bo.SupProduct"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,21 +19,31 @@
 
 <h2>Liste des produits</h2>
 
-<% for(SupProduct product : SupProductDao.getAllProducts()) { %>
 
+
+<c:forEach items="${products}" var="p">
 <p>
-	<strong><%= product.getName() %></strong> <br />
-	<%= product.getContent() %> <br />
-	<%= product.getPrice() %> euros <br />
-	<a href="showProduct.jsp?id=<%= product.getId() %>">Voir en détail</a>
+	<strong>
+		<c:out value="${p.name}" />
+	</strong> <br />
+	<c:out value="${p.content}" /> <br />
 	
-	<% if(session.getAttribute("login") != null) { %>
+	<c:out value="${p.price}" /> euros <br />
+	
+	<a href="showProduct?id=${p.id}">Voir en détail</a>
+	
+	<c:if test="${!empty login}">
 		<br />
 		<form method="post" action="<%= application.getContextPath() %>/auth/removeProduct">
-			<input type="hidden" name="id" value="<%= product.getId() %>"/>
+			<input type="hidden" name="id" value="${p.id}"/>
 			<input type="submit" value="Supprimer ce produit">
 		</form>
-	<% } %>
+	</c:if>
+</c:forEach>
+
+<% for(SupProduct product : SupProductDao.getAllProducts()) { %>
+
+
 </p>
 
 <% } %>
