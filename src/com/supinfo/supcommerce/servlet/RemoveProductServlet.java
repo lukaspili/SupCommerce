@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.supinfo.sun.supcommerce.doa.SupProductDao;
-
 public class RemoveProductServlet extends HttpServlet {
 
 	@Override
@@ -25,7 +23,7 @@ public class RemoveProductServlet extends HttpServlet {
 			return;
 		}
 
-		SupProductDao.removeProduct(id);
+		//SupProductDao.removeProduct(id);
 
 		resp.sendRedirect(req.getContextPath() + "/listProduct.jsp");
 	}

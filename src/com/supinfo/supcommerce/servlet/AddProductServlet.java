@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.supinfo.sun.supcommerce.bo.SupProduct;
-import com.supinfo.sun.supcommerce.doa.SupProductDao;
+import com.supinfo.supcommerce.entity.Product;
 
 public class AddProductServlet extends HttpServlet {
 	
@@ -32,12 +31,12 @@ public class AddProductServlet extends HttpServlet {
 			return;
 		}
 		
-		SupProduct product = new SupProduct();
+		Product product = new Product();
 		product.setName(name);
 		product.setContent(content);
 		product.setPrice(price);
 		
-		SupProductDao.addProduct(product);
+		//SupProductDao.addProduct(product);
 		
 		resp.sendRedirect(req.getContextPath() + "/showProduct?id=" + product.getId());
 	}

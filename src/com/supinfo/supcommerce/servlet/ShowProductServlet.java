@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.supinfo.sun.supcommerce.bo.SupProduct;
-import com.supinfo.sun.supcommerce.doa.SupProductDao;
-import com.supinfo.sun.supcommerce.exception.UnknownProductException;
+import com.supinfo.supcommerce.entity.Product;
 
 public class ShowProductServlet extends HttpServlet {
 
@@ -32,14 +30,14 @@ public class ShowProductServlet extends HttpServlet {
 			return;
 		}
 
-		SupProduct product;
+		Product product;
 
-		try {
-			product = SupProductDao.findProductById(id);
-		} catch (UnknownProductException e) {
-			resp.sendRedirect(req.getContextPath() + "/listProduct");
-			return;
-		}
+//		try {
+//			product = SupProductDao.findProductById(id);
+//		} catch (UnknownProductException e) {
+//			resp.sendRedirect(req.getContextPath() + "/listProduct");
+//			return;
+//		}
 
 		req.setAttribute("product", product);
 		RequestDispatcher rd = req.getRequestDispatcher("/showProduct.jsp");
