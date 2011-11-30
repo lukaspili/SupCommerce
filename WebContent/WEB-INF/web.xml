@@ -21,6 +21,16 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>CheaperProductServlet</servlet-name>
+		<servlet-class>com.supinfo.supcommerce.servlet.CheaperProductServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CheaperProductServlet</servlet-name>
+		<url-pattern>/cheaperList</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>ShowProductServlet</servlet-name>
 		<servlet-class>com.supinfo.supcommerce.servlet.ShowProductServlet</servlet-class>
 	</servlet>

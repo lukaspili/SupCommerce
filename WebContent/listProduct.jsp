@@ -1,6 +1,4 @@
 <%@page import="java.util.List"%>
-<%@page import="com.supinfo.sun.supcommerce.doa.SupProductDao"%>
-<%@page import="com.supinfo.sun.supcommerce.bo.SupProduct"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -40,13 +38,6 @@
 		</form>
 	</c:if>
 </c:forEach>
-
-<% for(SupProduct product : SupProductDao.getAllProducts()) { %>
-
-
-</p>
-
-<% } %>
 
 <%@ include file="/template/footer.jsp" %>
 

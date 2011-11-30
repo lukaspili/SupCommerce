@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.supinfo.supcommerce.entity.Product;
 
-public class ListProductServlet extends HttpServlet {
+public class CheaperProductServlet extends HttpServlet {
 	
 	private EntityManagerFactory emf;
 	
@@ -23,22 +23,23 @@ public class ListProductServlet extends HttpServlet {
 	public void init() throws ServletException {
 		emf = Persistence.createEntityManagerFactory("PU");
 	}
-
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		EntityManager em = emf.createEntityManager();
-		Query query = em.createQuery("SELECT p FROM Product AS p");
-		List<Product> products = query.getResultList();
-		
-		req.setAttribute("products", products);
-		RequestDispatcher rd = req.getRequestDispatcher("/listProduct.jsp");
-		rd.forward(req, resp);
-	}
 	
 	@Override
 	public void destroy() {
 		emf.close();
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		EntityManager em = emf.createEntityManager();
+		Query query = em.createQuery("SELECT p FROM Product AS p WHERE p.price <= 100");
+		List<Product> products = query.getResultList();
+		
+		req.setAttribute("products", products);
+		
+		RequestDispatcher rd = req.getRequestDispatcher("/listProduct.jsp");
+		rd.forward(req, resp);
 	}
 
 }
