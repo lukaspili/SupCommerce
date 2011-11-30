@@ -83,6 +83,16 @@
 		<url-pattern>/auth/removeProduct</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>AddCategoryServlet</servlet-name>
+		<servlet-class>com.supinfo.supcommerce.servlet.AddCategoryServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AddCategoryServlet</servlet-name>
+		<url-pattern>/auth/addCategory</url-pattern>
+	</servlet-mapping>
+
 
 	<!-- FILTERS -->
 

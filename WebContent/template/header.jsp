@@ -11,6 +11,7 @@
 
 	<% if(session.getAttribute("login") != null) { %>
 		<a href="<%= application.getContextPath() %>/auth/addProduct.jsp">Nouveau produit</a> |
+		<a href="<%= application.getContextPath() %>/auth/addCategory.jsp">Nouvelle catégorie</a> |
 		<a href="<%= application.getContextPath() %>/logout">Déconnexion</a>
 	<% } else { %>
 		<a href="<%= application.getContextPath() %>/login.html">Connexion</a>
